@@ -1,0 +1,50 @@
+<style>
+.instafeed {
+  height:150px;
+  text-align:center;
+  overflow:hidden;
+}
+
+.instafeed img {
+  height:150px; 
+  width:150px; 
+  object-fit:cover;
+}
+
+@media screen and (max-width: 800px) {
+  .instafeed {
+    height:250px;
+  }
+  .instafeed img {
+    height:125px;
+    width:125px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .instafeed {
+    height:200px;
+  }
+  .instafeed img {
+    height:100px;
+    width:100px;
+  }
+}
+</style>
+<div class="ig">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/instafeed.js@2.0.0/dist/instafeed.js"></script>
+<script type="text/javascript">
+  // Get token & run
+  $.getJSON("https://ig.instant-tokens.com/users/1d55f8ff-2133-4175-9f7e-4e9b03aa6dea/instagram/17841406741808588/token?userSecret=9z8dnrw0kompowz11pla4p", function(json) {
+    var instafeed = new Instafeed({
+      accessToken: json.Token,
+      target: '4wdcentraltownsville',
+      limit: 15,
+      template: '<a href="\{\{link\}\}"><img src="\{\{image\}\}" alt="\{\{location\}\}" loading="lazy" /></a>'
+    });
+    instafeed.run();
+  });
+</script>
+<div class="instafeed" id="4wdcentraltownsville"></div>
+</div>
